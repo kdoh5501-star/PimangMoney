@@ -93,14 +93,27 @@ export default function MePage() {
         return;
       }
 
+      type CommentRow = {
+        id: string;
+        content: string;
+        created_at: string;
+        post_id: string;
+        posts: { title: string | null }[] | null;
+      };
+
       setMyComments(
-        (data ?? []).map((row) => ({
-          id: row.id,
-          postId: row.post_id,
-          postTitle: row.posts?.title ?? "삭제된 게시글",
-          content: row.content,
-          createdAt: new Date(row.created_at).toLocaleString("ko-KR"),
-        })),
+        (data ?? []).map((row) => {
+          const r = row as CommentRow;
+          const firstPost = r.posts?.[0] ?? null;
+
+          return {
+            id: r.id,
+            postId: r.post_id,
+            postTitle: firstPost?.title ?? "삭제된 게시글",
+            content: r.content,
+            createdAt: new Date(r.created_at).toLocaleString("ko-KR"),
+          };
+        }),
       );
       setLoadingComments(false);
     }
