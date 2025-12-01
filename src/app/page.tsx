@@ -49,7 +49,7 @@ export default function Home() {
   const [postsError, setPostsError] = useState<string | null>(null);
   const [recentComments, setRecentComments] = useState<RecentComment[]>([]);
   const [popularTags, setPopularTags] = useState<PopularTag[]>([]);
-  const { user, loading, signOut } = useAuth();
+  const { user, loading, isAdmin, signOut } = useAuth();
 
   useEffect(() => {
     async function loadPosts() {
@@ -270,6 +270,14 @@ export default function Home() {
                 <div className="h-9 px-4 rounded-lg bg-[#34495e] animate-pulse" />
               ) : user ? (
                 <div className="flex items-center gap-3">
+                  {isAdmin && (
+                    <Link
+                      href="/admin"
+                      className="hidden md:inline-block text-sm text-yellow-300 hover:text-yellow-200"
+                    >
+                      관리자
+                    </Link>
+                  )}
                   <Link
                     href="/me"
                     className="hidden md:inline-block text-sm text-gray-200 hover:text-orange-300"

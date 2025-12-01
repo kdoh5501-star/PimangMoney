@@ -7,6 +7,7 @@ import { supabase } from "@/lib/supabaseClient";
 type AuthContextValue = {
   user: User | null;
   loading: boolean;
+  isAdmin: boolean;
   signOut: () => Promise<void>;
 };
 
@@ -43,6 +44,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const value: AuthContextValue = {
     user,
     loading,
+    isAdmin: Boolean(user && user.user_metadata?.role === "admin"),
     signOut: async () => {
       await supabase.auth.signOut();
     },
