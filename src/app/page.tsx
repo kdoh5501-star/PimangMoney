@@ -437,8 +437,6 @@ export default function Home() {
                       {comment.text}
                     </p>
                     <div className="flex items-center gap-2 text-xs text-gray-500">
-                      <span>{comment.author}</span>
-                      <span>•</span>
                       <span>{comment.time}</span>
                     </div>
                   </div>
