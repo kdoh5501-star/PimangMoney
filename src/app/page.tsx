@@ -97,7 +97,7 @@ export default function Home() {
         like_count: number | null;
         comment_count: number | null;
         created_at: string;
-        boards: { slug: string | null } | null;
+        boards: { slug: string | null }[] | null;
       };
 
       const mapCategory = (slug: string | null | undefined): Category => {
@@ -128,18 +128,22 @@ export default function Home() {
         return created.toLocaleDateString("ko-KR");
       };
 
-      const mapped: Post[] = (data as Row[]).map((row) => ({
-        id: row.id,
-        category: mapCategory(row.boards?.slug),
-        title: row.title,
-        content: row.content,
-        tags: row.tags ?? [],
-        author: "익명",
-        time: formatRelativeTime(row.created_at),
-        views: row.view_count ?? 0,
-        likes: row.like_count ?? 0,
-        comments: row.comment_count ?? 0,
-      }));
+      const mapped: Post[] = (data as Row[]).map((row) => {
+        const firstBoard = row.boards?.[0] ?? null;
+
+        return {
+          id: row.id,
+          category: mapCategory(firstBoard?.slug ?? null),
+          title: row.title,
+          content: row.content,
+          tags: row.tags ?? [],
+          author: "익명",
+          time: formatRelativeTime(row.created_at),
+          views: row.view_count ?? 0,
+          likes: row.like_count ?? 0,
+          comments: row.comment_count ?? 0,
+        };
+      });
 
       setPosts(mapped);
       setPostsLoading(false);
