@@ -20,26 +20,16 @@ type Post = {
   likes: number;
   comments: number;
 };
+type RecentComment = {
+  id: string;
+  text: string;
+  time: string;
+};
 
-const recentComments = [
-  { text: "피망 포커 처음 시작하는데 팁 좀 주세요", author: "매탑피", time: "4시간 전" },
-  { text: "피망머니는 공식 사이트에서 충전하시면 됩니다.", author: "알려드리는사람", time: "3시간 전" },
-  { text: "고수 분들 스트레이트 플러시 뗀적있음?", author: "포커고수만", time: "방금" },
-  { text: "대박.. 저는 평생 못 본듯 ㅋㅋ", author: "보면다", time: "역시간 전" },
-  { text: "AAA 프리플랍에서 올든 당했는데 이게 맞나요?", author: "고민중", time: "18시간 전" },
-  { text: "3뱃 사이즈가 너무 작진 않았나요?", author: "조언자", time: "역시간 전" },
-];
-
-const popularTags = [
-  { name: "#피망머니", count: 143 },
-  { name: "#초보", count: 89 },
-  { name: "#전략", count: 234 },
-  { name: "#텍사스홀덤", count: 312 },
-  { name: "#꿀팁", count: 156 },
-  { name: "#FAQ", count: 67 },
-  { name: "#꿀오즈", count: 45 },
-  { name: "#포커", count: 521 },
-];
+type PopularTag = {
+  name: string;
+  count: number;
+};
 
 type TabId = "all" | "notice" | "free" | "tip";
 
@@ -55,6 +45,8 @@ export default function Home() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [postsLoading, setPostsLoading] = useState(true);
   const [postsError, setPostsError] = useState<string | null>(null);
+  const [recentComments, setRecentComments] = useState<RecentComment[]>([]);
+  const [popularTags, setPopularTags] = useState<PopularTag[]>([]);
   const { user, loading, signOut } = useAuth();
 
   useEffect(() => {
@@ -79,6 +71,7 @@ export default function Home() {
           )
         `,
         )
+        .eq("boards.slug", "free")
         .order("created_at", { ascending: false });
 
       if (error) {
@@ -166,6 +159,66 @@ export default function Home() {
     }
   });
 
+  useEffect(() => {
+    async function loadSidebar() {
+      // 최근 댓글 10개
+      const { data: commentRows } = await supabase
+        .from("comments")
+        .select("id, content, created_at")
+        .order("created_at", { ascending: false })
+        .limit(10);
+
+      const toRelativeTime = (iso: string): string => {
+        const created = new Date(iso);
+        const diffMs = Date.now() - created.getTime();
+        const diffMinutes = Math.floor(diffMs / 60000);
+        if (diffMinutes < 1) return "방금 전";
+        if (diffMinutes < 60) return `${diffMinutes}분 전`;
+        const diffHours = Math.floor(diffMinutes / 60);
+        if (diffHours < 24) return `${diffHours}시간 전`;
+        const diffDays = Math.floor(diffHours / 24);
+        if (diffDays < 7) return `${diffDays}일 전`;
+        return created.toLocaleDateString("ko-KR");
+      };
+
+      setRecentComments(
+        (commentRows ?? []).map((row) => ({
+          id: row.id,
+          text: row.content,
+          time: toRelativeTime(row.created_at),
+        })),
+      );
+
+      // 인기 태그 (최근 200개 글 기준 상위 20개)
+      const { data: tagRows } = await supabase
+        .from("posts")
+        .select("tags, created_at")
+        .order("created_at", { ascending: false })
+        .limit(200);
+
+      const counts = new Map<string, number>();
+      (tagRows ?? []).forEach((row) => {
+        (row.tags ?? []).forEach((tag: string) => {
+          const trimmed = tag.trim();
+          if (!trimmed) return;
+          counts.set(trimmed, (counts.get(trimmed) ?? 0) + 1);
+        });
+      });
+
+      const popular: PopularTag[] = Array.from(counts.entries())
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 20)
+        .map(([name, count]) => ({
+          name: `#${name}`,
+          count,
+        }));
+
+      setPopularTags(popular);
+    }
+
+    void loadSidebar();
+  }, []);
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -183,21 +236,21 @@ export default function Home() {
                 <Link href="/" className="hover:text-orange-500 transition">
                   홈
                 </Link>
-                <button type="button" className="hover:text-orange-500 transition">
+                <Link href="/" className="hover:text-orange-500 transition">
                   자유게시판
-                </button>
-                <button type="button" className="hover:text-orange-500 transition">
+                </Link>
+                <Link href="/qna" className="hover:text-orange-500 transition">
                   Q&A
-                </button>
-                <button type="button" className="hover:text-orange-500 transition">
+                </Link>
+                <Link href="/tips" className="hover:text-orange-500 transition">
                   꿀팁
-                </button>
-                <button type="button" className="hover:text-orange-500 transition">
+                </Link>
+                <Link href="/money-guide" className="hover:text-orange-500 transition">
                   피망머니 가이드
-                </button>
-                <button type="button" className="hover:text-orange-500 transition">
+                </Link>
+                <Link href="/poker-guide" className="hover:text-orange-500 transition">
                   포커 가이드
-                </button>
+                </Link>
               </nav>
             </div>
 
@@ -215,6 +268,12 @@ export default function Home() {
                 <div className="h-9 px-4 rounded-lg bg-[#34495e] animate-pulse" />
               ) : user ? (
                 <div className="flex items-center gap-3">
+                  <Link
+                    href="/me"
+                    className="hidden md:inline-block text-sm text-gray-200 hover:text-orange-300"
+                  >
+                    마이페이지
+                  </Link>
                   <Link
                     href="/write"
                     className="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-lg text-sm font-medium transition"
