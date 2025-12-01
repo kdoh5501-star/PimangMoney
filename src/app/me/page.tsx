@@ -40,13 +40,14 @@ export default function MePage() {
 
   useEffect(() => {
     if (!user) return;
+    const userId = user.id;
 
     async function loadMyPosts() {
       setLoadingPosts(true);
       const { data, error } = await supabase
         .from("posts")
         .select("id, title, created_at, boards ( name )")
-        .eq("author_id", user.id)
+        .eq("author_id", userId)
         .order("created_at", { ascending: false });
 
       if (error) {
@@ -71,7 +72,7 @@ export default function MePage() {
       const { data, error } = await supabase
         .from("comments")
         .select("id, content, created_at, post_id, posts ( title )")
-        .eq("author_id", user.id)
+        .eq("author_id", userId)
         .order("created_at", { ascending: false });
 
       if (error) {
