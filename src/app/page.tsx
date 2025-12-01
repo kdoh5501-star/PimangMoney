@@ -320,9 +320,12 @@ export default function Home() {
                         {post.category}
                       </span>
                       <div className="flex-1">
-                        <h3 className="text-lg font-semibold text-gray-900 mb-1 hover:text-orange-500 cursor-pointer">
+                        <Link
+                          href={`/posts/${post.id}`}
+                          className="text-lg font-semibold text-gray-900 mb-1 hover:text-orange-500 cursor-pointer line-clamp-2"
+                        >
                           {post.title}
-                        </h3>
+                        </Link>
                         <p className="text-sm text-gray-600 mb-3">{post.content}</p>
 
                         {/* Tags */}
