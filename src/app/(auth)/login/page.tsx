@@ -24,7 +24,12 @@ export default function LoginPage() {
     setLoading(false);
 
     if (signInError) {
-      setError(signInError.message);
+      const message =
+        signInError.message.toLowerCase().includes("invalid login credentials") ||
+        signInError.message.toLowerCase().includes("invalid email or password")
+          ? "이메일 또는 비밀번호가 올바르지 않습니다."
+          : signInError.message;
+      setError(message);
       return;
     }
 

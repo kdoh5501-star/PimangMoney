@@ -8,13 +8,27 @@ export default function SignupPage() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
   const [nickname, setNickname] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
+    setSuccess(null);
+
+    if (password.length < 6) {
+      setError("비밀번호는 6자 이상이어야 합니다.");
+      return;
+    }
+
+    if (password !== passwordConfirm) {
+      setError("비밀번호가 서로 일치하지 않습니다.");
+      return;
+    }
+
     setLoading(true);
 
     const { error: signUpError } = await supabase.auth.signUp({
@@ -34,7 +48,10 @@ export default function SignupPage() {
       return;
     }
 
-    router.push("/");
+    setSuccess("회원가입이 완료되었습니다. 이제 로그인해 주세요.");
+    setTimeout(() => {
+      router.push("/login");
+    }, 800);
   };
 
   return (
@@ -81,10 +98,28 @@ export default function SignupPage() {
               className="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
             />
           </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              비밀번호 확인
+            </label>
+            <input
+              type="password"
+              required
+              minLength={6}
+              value={passwordConfirm}
+              onChange={(e) => setPasswordConfirm(e.target.value)}
+              className="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+            />
+          </div>
 
           {error && (
             <p className="text-sm text-red-500">
               {error}
+            </p>
+          )}
+          {success && (
+            <p className="text-sm text-green-600">
+              {success}
             </p>
           )}
 
