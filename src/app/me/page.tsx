@@ -56,13 +56,25 @@ export default function MePage() {
         return;
       }
 
+      type PostRow = {
+        id: string;
+        title: string;
+        created_at: string;
+        boards: { name: string | null }[] | null;
+      };
+
       setMyPosts(
-        (data ?? []).map((row) => ({
-          id: row.id,
-          title: row.title,
-          boardName: row.boards?.name ?? "게시판",
-          createdAt: new Date(row.created_at).toLocaleString("ko-KR"),
-        })),
+        (data ?? []).map((row) => {
+          const r = row as PostRow;
+          const firstBoard = r.boards?.[0] ?? null;
+
+          return {
+            id: r.id,
+            title: r.title,
+            boardName: firstBoard?.name ?? "게시판",
+            createdAt: new Date(r.created_at).toLocaleString("ko-KR"),
+          };
+        }),
       );
       setLoadingPosts(false);
     }
