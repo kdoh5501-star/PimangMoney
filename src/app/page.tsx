@@ -1,5 +1,7 @@
 "use client";
 
+// 피망 커뮤니티 자유게시판 메인 페이지
+
 import Link from "next/link";
 import { Search, Flame, Clock, TrendingUp, Megaphone, Eye, ThumbsUp, MessageSquare } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -480,3 +482,4 @@ export default function Home() {
     </div>
   );
 }
+
