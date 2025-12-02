@@ -83,7 +83,7 @@ export default function WritePage() {
       return;
     }
 
-    router.push("/");
+    router.push("/community");
   };
 
   if (loading || !user) {
