@@ -36,6 +36,17 @@ export default function LandingPage() {
       </header>
 
       <main className="max-w-6xl mx-auto px-4 py-10 space-y-16">
+        {/* Top large banner image placeholder */}
+        <section className="mb-4">
+          <div className="w-full rounded-2xl bg-gray-200 border border-dashed border-gray-300 h-60 md:h-80 flex items-center justify-center text-center">
+            <p className="text-sm md:text-base text-gray-500">
+              상단 메인 배너 이미지 영역입니다.
+              <br />
+              (대표님이 사용하시는 큰 피망머니 배너 이미지를 이곳에 넣으시면 됩니다.)
+            </p>
+          </div>
+        </section>
+
         {/* Hero section */}
         <section className="grid md:grid-cols-2 gap-8 items-center">
           <div>
@@ -80,6 +91,24 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {/* Kakao banner placeholder */}
+        <section className="grid md:grid-cols-[2fr,3fr] gap-8 items-center">
+          <div className="w-full h-32 md:h-40 rounded-2xl bg-yellow-200 border border-dashed border-yellow-400 flex items-center justify-center">
+            <p className="text-sm md:text-base text-yellow-800">
+              카카오톡 배너 이미지 영역
+              <br />
+              (카톡 QR 또는 버튼 이미지를 이곳에 넣으시면 됩니다.)
+            </p>
+          </div>
+          <div className="text-sm text-gray-700 leading-relaxed">
+            <h2 className="text-lg font-bold mb-2">피망머니상 돼지머니</h2>
+            <p>
+              피망 포커, 뉴맞고, 섯다, 슬롯, 바카라, 홀덤 등 다양한 피망게임에서 사용하는 피망머니를 판매·매입하는 전문
+              거래소입니다. 최저가 판매와 최고가 매입으로 많은 고객님의 만족을 얻고 있습니다.
+            </p>
+          </div>
+        </section>
+
         {/* About */}
         <section id="about" className="grid md:grid-cols-2 gap-10">
           <div>
@@ -119,6 +148,43 @@ export default function LandingPage() {
               <p className="text-xs font-semibold text-orange-500 mb-1">STEP 3</p>
               <p className="font-semibold mb-1">피망머니 지급 완료</p>
               <p className="text-gray-600">피망머니 지급이 완료되면 카카오톡으로 다시 한 번 완료 안내를 드립니다.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Image + Text blocks (판매 / 매입 서비스) */}
+        <section className="space-y-10">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="w-full h-56 rounded-2xl bg-gray-200 border border-dashed border-gray-300 flex items-center justify-center">
+              <p className="text-sm text-gray-500 text-center">
+                피망머니 판매 서비스 관련 이미지 영역
+                <br />
+                (게임 화면, 칩 이미지 등 자유롭게 추가)
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-bold mb-2">피망머니 판매 서비스</h3>
+              <p className="text-sm text-gray-700 leading-relaxed">
+                신뢰할 수 있는 플랫폼에서 피망머니를 구매하는 것이 가장 중요합니다. 돼지머니는 인증된 계좌와 보안
+                시스템으로 안전한 거래 환경을 제공하며, 거래 전후 모든 내역을 투명하게 안내합니다.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="order-2 md:order-1">
+              <h3 className="text-lg font-bold mb-2">피망머니 매입 서비스</h3>
+              <p className="text-sm text-gray-700 leading-relaxed">
+                사용하지 않는 피망머니를 현금화하고 싶을 때, 돼지머니의 매입 서비스를 이용하실 수 있습니다. 합리적인
+                시세와 빠른 정산으로 피망머니를 안전하게 정리할 수 있도록 도와드립니다.
+              </p>
+            </div>
+            <div className="order-1 md:order-2 w-full h-56 rounded-2xl bg-gray-200 border border-dashed border-gray-300 flex items-center justify-center">
+              <p className="text-sm text-gray-500 text-center">
+                피망머니 매입 서비스 관련 이미지 영역
+                <br />
+                (현금화, 상담 이미지 등 추가)
+              </p>
             </div>
           </div>
         </section>
