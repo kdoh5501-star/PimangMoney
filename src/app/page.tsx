@@ -1,6 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
+
+// 이미지 파일은 Next.js 프로젝트의 public 폴더 아래에 두어야 합니다.
+// 예시:
+// public/banners/main-banner.jpg
+// public/banners/kakao-banner.jpg
+// public/banners/sell-service.jpg
+// public/banners/buy-service.jpg
 
 export default function LandingPage() {
   return (
@@ -38,14 +46,17 @@ export default function LandingPage() {
       </header>
 
       <main className="max-w-6xl mx-auto px-4 py-10 space-y-16">
-        {/* Top large banner image placeholder */}
+        {/* Top large banner image */}
         <section className="mb-4">
-          <div className="w-full rounded-2xl bg-gray-200 border border-dashed border-gray-300 h-60 md:h-80 flex items-center justify-center text-center">
-            <p className="text-sm md:text-base text-gray-500">
-              상단 메인 배너 이미지 영역입니다.
-              <br />
-              (대표님이 사용하시는 큰 피망머니 배너 이미지를 이곳에 넣으시면 됩니다.)
-            </p>
+          <div className="w-full rounded-2xl overflow-hidden border border-gray-300">
+            <Image
+              src="/banners/main-banner.jpg"
+              alt="최강또또머니상 메인 배너"
+              width={1600}
+              height={500}
+              priority
+              className="w-full h-60 md:h-80 object-cover"
+            />
           </div>
         </section>
 
@@ -93,14 +104,16 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* Kakao banner placeholder */}
+        {/* Kakao banner */}
         <section className="grid md:grid-cols-[2fr,3fr] gap-8 items-center">
-          <div className="w-full h-32 md:h-40 rounded-2xl bg-yellow-200 border border-dashed border-yellow-400 flex items-center justify-center">
-            <p className="text-sm md:text-base text-yellow-800">
-              카카오톡 배너 이미지 영역
-              <br />
-              (카톡 QR 또는 버튼 이미지를 이곳에 넣으시면 됩니다.)
-            </p>
+          <div className="w-full h-32 md:h-40 rounded-2xl overflow-hidden border border-yellow-400">
+            <Image
+              src="/banners/kakao-banner.jpg"
+              alt="카카오톡 상담 배너"
+              width={800}
+              height={300}
+              className="w-full h-full object-cover"
+            />
           </div>
             <div className="text-sm text-gray-700 leading-relaxed">
               <h2 className="text-lg font-bold mb-2">최강또또머니상</h2>
@@ -139,7 +152,12 @@ export default function LandingPage() {
             <div className="p-4 rounded-lg bg-gray-50">
               <p className="text-xs font-semibold text-orange-500 mb-1">STEP 1</p>
               <p className="font-semibold mb-1">카카오톡으로 시세 문의</p>
+<<<<<<< HEAD
               <p className="text-gray-600">카카오톡 ID `dd221` 으로 연락하여 원하는 금액과 게임을 알려주세요.</p>
+=======
+              <p className="text-gray-600">카카오톡 ID `
+dd221` 으로 연락하여 원하는 금액과 게임을 알려주세요.</p>
+>>>>>>> 01dc3c2 (Initial commit for PimangMoney community site)
             </div>
             <div className="p-4 rounded-lg bg-gray-50">
               <p className="text-xs font-semibold text-orange-500 mb-1">STEP 2</p>
@@ -157,12 +175,14 @@ export default function LandingPage() {
         {/* Image + Text blocks (판매 / 매입 서비스) */}
         <section className="space-y-10">
           <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="w-full h-56 rounded-2xl bg-gray-200 border border-dashed border-gray-300 flex items-center justify-center">
-              <p className="text-sm text-gray-500 text-center">
-                피망머니 판매 서비스 관련 이미지 영역
-                <br />
-                (게임 화면, 칩 이미지 등 자유롭게 추가)
-              </p>
+            <div className="w-full h-56 rounded-2xl overflow-hidden border border-gray-300">
+              <Image
+                src="/banners/sell-service.jpg"
+                alt="피망머니 판매 서비스 이미지"
+                width={800}
+                height={400}
+                className="w-full h-full object-cover"
+              />
             </div>
             <div>
               <h3 className="text-lg font-bold mb-2">피망머니 판매 서비스</h3>
@@ -181,12 +201,14 @@ export default function LandingPage() {
                 시세와 빠른 정산으로 피망머니를 안전하게 정리할 수 있도록 도와드립니다.
               </p>
             </div>
-            <div className="order-1 md:order-2 w-full h-56 rounded-2xl bg-gray-200 border border-dashed border-gray-300 flex items-center justify-center">
-              <p className="text-sm text-gray-500 text-center">
-                피망머니 매입 서비스 관련 이미지 영역
-                <br />
-                (현금화, 상담 이미지 등 추가)
-              </p>
+            <div className="order-1 md:order-2 w-full h-56 rounded-2xl overflow-hidden border border-gray-300">
+              <Image
+                src="/banners/buy-service.jpg"
+                alt="피망머니 매입 서비스 이미지"
+                width={800}
+                height={400}
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
         </section>
@@ -204,7 +226,12 @@ export default function LandingPage() {
             <div className="p-4 rounded-lg bg-gray-50 border border-gray-100">
               <p className="font-semibold text-gray-800 mb-1">사기 예방을 위한 수칙</p>
               <ul className="text-gray-700 list-disc list-inside space-y-1">
+<<<<<<< HEAD
                 <li>항상 공식 연락처(카카오톡 `dd221`)로만 거래하세요.</li>
+=======
+                <li>항상 공식 연락처(카카오톡 `
+dd221`)로만 거래하세요.</li>
+>>>>>>> 01dc3c2 (Initial commit for PimangMoney community site)
                 <li>거래 내역(날짜, 금액, 계좌, 상대 아이디)을 반드시 기록해 두세요.</li>
                 <li>의심스러운 제안이나 비정상적인 조건은 즉시 거래를 중단하세요.</li>
               </ul>
