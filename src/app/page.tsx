@@ -48,7 +48,7 @@ export default function LandingPage() {
               width={1600}
               height={500}
               priority
-              className="w-full h-72 md:h-96 object-contain"
+              className="w-full h-60 md:h-80 object-cover"
             />
           </div>
         </section>
