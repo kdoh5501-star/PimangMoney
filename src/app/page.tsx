@@ -139,7 +139,7 @@ export default function LandingPage() {
             <div className="p-4 rounded-lg bg-gray-50">
               <p className="text-xs font-semibold text-orange-500 mb-1">STEP 1</p>
               <p className="font-semibold mb-1">카카오톡으로 시세 문의</p>
-              <p className="text-gray-600">카카오톡 ID `pig0000` 으로 연락하여 원하는 금액과 게임을 알려주세요.</p>
+              <p className="text-gray-600">카카오톡 ID `dd221` 으로 연락하여 원하는 금액과 게임을 알려주세요.</p>
             </div>
             <div className="p-4 rounded-lg bg-gray-50">
               <p className="text-xs font-semibold text-orange-500 mb-1">STEP 2</p>
@@ -204,7 +204,7 @@ export default function LandingPage() {
             <div className="p-4 rounded-lg bg-gray-50 border border-gray-100">
               <p className="font-semibold text-gray-800 mb-1">사기 예방을 위한 수칙</p>
               <ul className="text-gray-700 list-disc list-inside space-y-1">
-                <li>항상 공식 연락처(카카오톡 `pig0000`)로만 거래하세요.</li>
+                <li>항상 공식 연락처(카카오톡 `dd221`)로만 거래하세요.</li>
                 <li>거래 내역(날짜, 금액, 계좌, 상대 아이디)을 반드시 기록해 두세요.</li>
                 <li>의심스러운 제안이나 비정상적인 조건은 즉시 거래를 중단하세요.</li>
               </ul>
