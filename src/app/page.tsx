@@ -7,6 +7,7 @@ import Image from "next/image";
 // - 상단 메인 배너
 // - 카카오톡 배너
 // - 판매/매입 서비스 섹션
+// - 필요 시 추가 섹션을 아래에 자유롭게 확장 가능
 
 export default function LandingPage() {
   return (
