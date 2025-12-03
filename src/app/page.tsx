@@ -68,7 +68,7 @@ export default function LandingPage() {
             </p>
             <div className="flex flex-wrap gap-3">
               <a
-                href="http://qr.kakao.com/talk/ZbrmnP1hgQBzndGIrou4TxumlJI-"
+                href="https://open.kakao.com/o/gn0aWS4h"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-lg text-sm font-medium"
