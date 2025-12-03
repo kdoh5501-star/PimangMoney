@@ -41,14 +41,14 @@ export default function LandingPage() {
       <main className="max-w-6xl mx-auto px-4 py-10 space-y-16">
         {/* Top large banner image */}
         <section className="mb-4">
-          <div className="w-full rounded-2xl overflow-hidden border border-gray-300">
+          <div className="w-full rounded-2xl overflow-hidden border border-gray-300 bg-white">
             <Image
               src="/banners/main-banner.jpg"
               alt="최강또또머니상 메인 배너"
               width={1600}
               height={500}
               priority
-              className="w-full h-60 md:h-80 object-cover"
+              className="w-full h-72 md:h-96 object-contain"
             />
           </div>
         </section>
@@ -99,13 +99,13 @@ export default function LandingPage() {
 
         {/* Kakao banner */}
         <section className="grid md:grid-cols-[2fr,3fr] gap-8 items-center">
-          <div className="w-full h-32 md:h-40 rounded-2xl overflow-hidden border border-yellow-400">
+          <div className="w-full rounded-2xl overflow-hidden border border-yellow-400 bg-white">
             <Image
               src="/banners/kakao-banner.jpg"
               alt="카카오톡 상담 배너"
               width={800}
               height={300}
-              className="w-full h-full object-cover"
+              className="w-full h-auto object-contain"
             />
           </div>
             <div className="text-sm text-gray-700 leading-relaxed">
@@ -163,13 +163,13 @@ export default function LandingPage() {
         {/* Image + Text blocks (판매 / 매입 서비스) */}
         <section className="space-y-10">
           <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="w-full h-56 rounded-2xl overflow-hidden border border-gray-300">
+            <div className="w-full rounded-2xl overflow-hidden border border-gray-300 bg-white">
               <Image
                 src="/banners/sell-service.jpg"
                 alt="피망머니 판매 서비스 이미지"
                 width={800}
                 height={400}
-                className="w-full h-full object-cover"
+                className="w-full h-auto object-contain"
               />
             </div>
             <div>
@@ -189,13 +189,13 @@ export default function LandingPage() {
                 시세와 빠른 정산으로 피망머니를 안전하게 정리할 수 있도록 도와드립니다.
               </p>
             </div>
-            <div className="order-1 md:order-2 w-full h-56 rounded-2xl overflow-hidden border border-gray-300">
+            <div className="order-1 md:order-2 w-full rounded-2xl overflow-hidden border border-gray-300 bg-white">
               <Image
                 src="/banners/buy-service.jpg"
                 alt="피망머니 매입 서비스 이미지"
                 width={800}
                 height={400}
-                className="w-full h-full object-cover"
+                className="w-full h-auto object-contain"
               />
             </div>
           </div>
