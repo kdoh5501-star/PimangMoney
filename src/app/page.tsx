@@ -8,6 +8,7 @@ import Image from "next/image";
 // - 카카오톡 배너
 // - 판매/매입 서비스 섹션
 // - 필요 시 추가 섹션을 아래에 자유롭게 확장 가능
+// - 이 줄은 배포를 위한 커밋 트리거 용도의 단순 주석입니다.
 
 export default function LandingPage() {
   return (
