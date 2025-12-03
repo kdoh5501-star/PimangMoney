@@ -10,7 +10,7 @@ export default function LandingPage() {
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="text-xl font-bold">
-              <span className="text-orange-500">돼지</span>머니
+              <span className="text-orange-500">최강</span>또또머니상
             </span>
             <span className="text-xs text-gray-300 hidden sm:inline">피망머니 전문 거래소</span>
           </div>
@@ -28,9 +28,11 @@ export default function LandingPage() {
               커뮤니티
             </Link>
           </nav>
-          <div className="flex items-center gap-2 text-xs sm:text-sm">
-            <span className="hidden sm:inline text-gray-300">카카오톡 문의</span>
-            <span className="px-3 py-1 rounded-full bg-orange-500 text-white font-semibold">pig0000</span>
+          <div className="flex items-center gap-3 text-xs sm:text-sm">
+            <span className="hidden sm:inline text-gray-300">카카오톡</span>
+            <span className="px-3 py-1 rounded-full bg-orange-500 text-white font-semibold">dd221</span>
+            <span className="hidden sm:inline text-gray-300">전화</span>
+            <span className="px-3 py-1 rounded-full bg-gray-800 text-white font-semibold">010-7308-8948</span>
           </div>
         </div>
       </header>
@@ -53,7 +55,7 @@ export default function LandingPage() {
             <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 leading-snug">
               피망머니 거래,
               <br />
-              <span className="text-orange-500">돼지머니</span>에서 안전하게 한 번에
+              <span className="text-orange-500">최강또또머니상</span>에서 안전하게 한 번에
             </h1>
             <p className="text-sm md:text-base text-gray-600 mb-6">
               피망 포커 · 맞고 · 섯다 · 슬롯 등 다양한 피망게임에서 사용하는 머니를
@@ -65,7 +67,7 @@ export default function LandingPage() {
                 href="https://open.kakao.com/o/some-link"
                 className="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-lg text-sm font-medium"
               >
-                카카오톡 문의하기
+                카카오톡 문의하기 (dd221)
               </a>
               <Link
                 href="/community"
@@ -100,8 +102,8 @@ export default function LandingPage() {
               (카톡 QR 또는 버튼 이미지를 이곳에 넣으시면 됩니다.)
             </p>
           </div>
-          <div className="text-sm text-gray-700 leading-relaxed">
-            <h2 className="text-lg font-bold mb-2">피망머니상 돼지머니</h2>
+            <div className="text-sm text-gray-700 leading-relaxed">
+              <h2 className="text-lg font-bold mb-2">최강또또머니상</h2>
             <p>
               피망 포커, 뉴맞고, 섯다, 슬롯, 바카라, 홀덤 등 다양한 피망게임에서 사용하는 피망머니를 판매·매입하는 전문
               거래소입니다. 최저가 판매와 최고가 매입으로 많은 고객님의 만족을 얻고 있습니다.
@@ -165,7 +167,7 @@ export default function LandingPage() {
             <div>
               <h3 className="text-lg font-bold mb-2">피망머니 판매 서비스</h3>
               <p className="text-sm text-gray-700 leading-relaxed">
-                신뢰할 수 있는 플랫폼에서 피망머니를 구매하는 것이 가장 중요합니다. 돼지머니는 인증된 계좌와 보안
+                신뢰할 수 있는 플랫폼에서 피망머니를 구매하는 것이 가장 중요합니다. 최강또또머니상은 인증된 계좌와 보안
                 시스템으로 안전한 거래 환경을 제공하며, 거래 전후 모든 내역을 투명하게 안내합니다.
               </p>
             </div>
@@ -175,7 +177,7 @@ export default function LandingPage() {
             <div className="order-2 md:order-1">
               <h3 className="text-lg font-bold mb-2">피망머니 매입 서비스</h3>
               <p className="text-sm text-gray-700 leading-relaxed">
-                사용하지 않는 피망머니를 현금화하고 싶을 때, 돼지머니의 매입 서비스를 이용하실 수 있습니다. 합리적인
+                사용하지 않는 피망머니를 현금화하고 싶을 때, 최강또또머니상의 매입 서비스를 이용하실 수 있습니다. 합리적인
                 시세와 빠른 정산으로 피망머니를 안전하게 정리할 수 있도록 도와드립니다.
               </p>
             </div>
@@ -230,10 +232,10 @@ export default function LandingPage() {
 
       <footer className="border-t border-gray-200 mt-10 py-6 text-center text-xs text-gray-500">
         <p className="mb-1">
-          피망머니상 돼지머니 · KakaoTalk: <span className="font-semibold">pig0000</span> · Email:
+          최강또또머니상 · KakaoTalk: <span className="font-semibold">dd221</span> · Tel: 010-7308-8948 · Email:
           admin@pmangmoneyshop.com
         </p>
-        <p>© {new Date().getFullYear()} 피망머니상 돼지머니. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} 최강또또머니상. All rights reserved.</p>
       </footer>
     </div>
   );
