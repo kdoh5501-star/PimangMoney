@@ -160,7 +160,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* Image + Text blocks (판매 / 매입 서비스) */}
+        {/* Image blocks (판매 / 매입 서비스) */}
         <section className="space-y-10">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="w-full rounded-2xl overflow-hidden border border-gray-300 bg-white">
@@ -172,24 +172,7 @@ export default function LandingPage() {
                 className="w-full h-auto object-contain"
               />
             </div>
-            <div>
-              <h3 className="text-lg font-bold mb-2">피망머니 판매 서비스</h3>
-              <p className="text-sm text-gray-700 leading-relaxed">
-                신뢰할 수 있는 플랫폼에서 피망머니를 구매하는 것이 가장 중요합니다. 최강또또머니상은 인증된 계좌와 보안
-                시스템으로 안전한 거래 환경을 제공하며, 거래 전후 모든 내역을 투명하게 안내합니다.
-              </p>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="order-2 md:order-1">
-              <h3 className="text-lg font-bold mb-2">피망머니 매입 서비스</h3>
-              <p className="text-sm text-gray-700 leading-relaxed">
-                사용하지 않는 피망머니를 현금화하고 싶을 때, 최강또또머니상의 매입 서비스를 이용하실 수 있습니다. 합리적인
-                시세와 빠른 정산으로 피망머니를 안전하게 정리할 수 있도록 도와드립니다.
-              </p>
-            </div>
-            <div className="order-1 md:order-2 w-full rounded-2xl overflow-hidden border border-gray-300 bg-white">
+            <div className="w-full rounded-2xl overflow-hidden border border-gray-300 bg-white">
               <Image
                 src="/banners/buy-service.jpg"
                 alt="피망머니 매입 서비스 이미지"
