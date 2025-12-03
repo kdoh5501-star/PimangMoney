@@ -23,18 +23,10 @@ export default function LandingPage() {
             <span className="text-xs text-gray-300 hidden sm:inline">피망머니 전문 거래소</span>
           </div>
           <nav className="hidden sm:flex items-center gap-6 text-sm">
-            <a href="#about" className="hover:text-orange-400">
-              피망머니상
-            </a>
-            <a href="#steps" className="hover:text-orange-400">
-              거래 방법
-            </a>
-            <a href="#safe" className="hover:text-orange-400">
-              안전 안내
-            </a>
-            <Link href="/community" className="hover:text-orange-400">
-              커뮤니티
-            </Link>
+            <a href="#about" className="hover:text-orange-400">피망머니상</a>
+            <a href="#steps" className="hover:text-orange-400">거래 방법</a>
+            <a href="#safe" className="hover:text-orange-400">안전 안내</a>
+            <Link href="/community" className="hover:text-orange-400">커뮤니티</Link>
           </nav>
           <div className="flex items-center gap-3 text-xs sm:text-sm">
             <span className="hidden sm:inline text-gray-300">카카오톡</span>
@@ -44,6 +36,7 @@ export default function LandingPage() {
           </div>
         </div>
       </header>
+      {/* 나머지 main 이하 코드는 그대로 두시면 됩니다 */}
 
       <main className="max-w-6xl mx-auto px-4 py-10 space-y-16">
         {/* Top large banner image */}
