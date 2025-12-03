@@ -130,7 +130,7 @@ export default function LandingPage() {
             </p>
           </div>
           <div className="space-y-3">
-            <h3 className="text-sm font-semibold text-gray-800">돼지머니를 선택해야 하는 이유</h3>
+            <h3 className="text-sm font-semibold text-gray-800">최강또또머니상을 선택해야 하는 이유</h3>
             <ul className="space-y-2 text-sm text-gray-700">
               <li>· 업계 경쟁력 있는 시세로 거래 지원</li>
               <li>· 24시간 신속 응대 및 처리</li>
