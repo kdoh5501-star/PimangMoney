@@ -3,12 +3,10 @@
 import Link from "next/link";
 import Image from "next/image";
 
-// 이미지 파일은 Next.js 프로젝트의 public 폴더 아래에 두어야 합니다.
-// 예시:
-// public/banners/main-banner.jpg
-// public/banners/kakao-banner.jpg
-// public/banners/sell-service.jpg
-// public/banners/buy-service.jpg
+// NOTE: 랜딩 페이지 레이아웃 관련 설명용 주석 (빌드에는 영향 없음)
+// - 상단 메인 배너
+// - 카카오톡 배너
+// - 판매/매입 서비스 섹션
 
 export default function LandingPage() {
   return (
