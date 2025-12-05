@@ -62,10 +62,15 @@ export default function CommunityPage() {
         .select("id, slug")
         .in("slug", ["free", "notice", "tips", "best"]);
 
+      type BoardRow = {
+        id: string;
+        slug: string | null;
+      };
+
       const boardIdBySlug = new Map<string, string>();
-      (boardRows ?? []).forEach((row: any) => {
+      (boardRows ?? []).forEach((row: BoardRow) => {
         if (row.slug && row.id) {
-          boardIdBySlug.set(row.slug as string, row.id as string);
+          boardIdBySlug.set(row.slug, row.id);
         }
       });
 
