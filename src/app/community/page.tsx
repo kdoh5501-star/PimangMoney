@@ -268,61 +268,63 @@ export default function CommunityPage() {
               </div>
               {loading ? (
                 <div className="h-9 px-4 rounded-lg bg-[#34495e] animate-pulse" />
-              ) : user ? (
-                <div className="flex items-center gap-3">
-                  {isAdmin && (
-                    <Link
-                      href="/admin"
-                      className="hidden md:inline-block text-sm text-yellow-300 hover:text-yellow-200"
-                    >
-                      관리자
-                    </Link>
-                  )}
-                  <Link
-                    href="/me"
-                    className="hidden md:inline-block text-sm text-gray-200 hover:text-orange-300"
-                  >
-                    마이페이지
-                  </Link>
-                  <Link
-                    href="/write"
-                    className="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-lg text-sm font-medium transition"
-                  >
-                    글쓰기
-                  </Link>
-                  <span className="text-sm text-gray-200">
-                    {user.user_metadata?.nickname ?? user.email}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={async () => {
-                      await signOut();
-                    }}
-                    className="bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded-lg text-sm font-medium transition"
-                  >
-                    로그아웃
-                  </button>
-                </div>
               ) : (
                 <div className="flex items-center gap-2">
-                  <Link
-                    href="/login"
-                    className="bg-transparent border border-orange-500 text-orange-400 hover:bg-orange-500 hover:text-white px-4 py-2 rounded-lg text-sm font-medium transition"
-                  >
-                    로그인
-                  </Link>
-                  <Link
-                    href="/signup"
-                    className="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-lg text-sm font-medium transition"
-                  >
-                    회원가입
-                  </Link>
+                  {user ? (
+                    <>
+                      {isAdmin && (
+                        <Link
+                          href="/admin"
+                          className="hidden md:inline-block text-sm text-yellow-300 hover:text-yellow-200"
+                        >
+                          관리자
+                        </Link>
+                      )}
+                      <Link
+                        href="/me"
+                        className="hidden md:inline-block text-sm text-gray-200 hover:text-orange-300"
+                      >
+                        마이페이지
+                      </Link>
+                    </>
+                  ) : (
+                    <>
+                      <Link
+                        href="/login"
+                        className="hidden sm:inline-block bg-transparent border border-orange-500 text-orange-400 hover:bg-orange-500 hover:text-white px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition"
+                      >
+                        로그인
+                      </Link>
+                      <Link
+                        href="/signup"
+                        className="hidden sm:inline-block bg-orange-500 hover:bg-orange-600 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition"
+                      >
+                        회원가입
+                      </Link>
+                    </>
+                  )}
                   <Link
                     href="/write"
-                    className="hidden md:inline-block bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-lg text-sm font-medium transition"
+                    className="bg-orange-500 hover:bg-orange-600 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition"
                   >
                     글쓰기
                   </Link>
+                  {user && (
+                    <>
+                      <span className="hidden sm:inline text-sm text-gray-200">
+                        {user.user_metadata?.nickname ?? user.email}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={async () => {
+                          await signOut();
+                        }}
+                        className="hidden sm:inline bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded-lg text-sm font-medium transition"
+                      >
+                        로그아웃
+                      </button>
+                    </>
+                  )}
                 </div>
               )}
             </div>
@@ -335,7 +337,7 @@ export default function CommunityPage() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Left - Main Content */}
           <div className="lg:col-span-2">
-            {/* Tabs */}
+            {/* Tabs + Mobile action */}
             <div className="bg-white rounded-lg shadow-sm mb-4">
               <div className="flex items-center gap-2 p-4 border-b">
                 {TABS.map((tab) => (
@@ -355,6 +357,18 @@ export default function CommunityPage() {
                     {tab.label}
                   </button>
                 ))}
+              </div>
+              {/* Mobile-only help + write button */}
+              <div className="flex items-center justify-between gap-3 px-4 pb-4 sm:hidden">
+                <p className="text-[11px] text-gray-500">
+                  회원가입 없이도 누구나 자유게시판에 글을 작성할 수 있습니다.
+                </p>
+                <Link
+                  href="/write"
+                  className="flex-shrink-0 bg-orange-500 hover:bg-orange-600 px-3 py-1.5 rounded-lg text-xs font-medium text-white"
+                >
+                  글쓰기
+                </Link>
               </div>
             </div>
 
