@@ -56,21 +56,32 @@ export default function CommunityPage() {
       setPostsLoading(true);
       setPostsError(null);
 
+      // 게시판 id ↔ slug 매핑을 먼저 가져옵니다.
+      const { data: boardRows } = await supabase
+        .from("boards")
+        .select("id, slug")
+        .in("slug", ["free", "notice", "tips", "best"]);
+
+      const boardIdBySlug = new Map<string, string>();
+      (boardRows ?? []).forEach((row: any) => {
+        if (row.slug && row.id) {
+          boardIdBySlug.set(row.slug as string, row.id as string);
+        }
+      });
+
       const { data, error } = await supabase
         .from("posts")
         .select(
           `
           id,
+          board_id,
           title,
           content,
           tags,
           view_count,
           like_count,
           comment_count,
-          created_at,
-          boards (
-            slug
-          )
+          created_at
         `,
         )
         .order("created_at", { ascending: false });
@@ -84,6 +95,7 @@ export default function CommunityPage() {
 
       type Row = {
         id: string;
+        board_id: string | null;
         title: string;
         content: string;
         tags: string[] | null;
@@ -91,22 +103,15 @@ export default function CommunityPage() {
         like_count: number | null;
         comment_count: number | null;
         created_at: string;
-        boards: { slug: string | null }[] | null;
       };
 
-      const mapCategory = (slug: string | null | undefined): Category => {
-        switch (slug) {
-          case "notice":
-            return "공지";
-          case "tips":
-            return "꿀팁";
-          case "free":
-            return "자유";
-          case "best":
-            return "베스트";
-          default:
-            return "자유";
-        }
+      const mapCategoryByBoardId = (boardId: string | null): Category => {
+        if (!boardId) return "자유";
+        if (boardId === boardIdBySlug.get("notice")) return "공지";
+        if (boardId === boardIdBySlug.get("tips")) return "꿀팁";
+        if (boardId === boardIdBySlug.get("best")) return "베스트";
+        if (boardId === boardIdBySlug.get("free")) return "자유";
+        return "자유";
       };
 
       const formatRelativeTime = (iso: string): string => {
@@ -123,11 +128,9 @@ export default function CommunityPage() {
       };
 
       const mapped: Post[] = (data as Row[]).map((row) => {
-        const firstBoard = row.boards?.[0] ?? null;
-
         return {
           id: row.id,
-          category: mapCategory(firstBoard?.slug ?? null),
+          category: mapCategoryByBoardId(row.board_id),
           title: row.title,
           content: row.content,
           tags: row.tags ?? [],
