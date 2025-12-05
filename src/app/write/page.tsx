@@ -79,7 +79,7 @@ export default function WritePage() {
 
     if (insertError) {
       console.error(insertError);
-      setError("게시글 등록에 실패했습니다.");
+      setError(insertError.message ?? "게시글 등록에 실패했습니다.");
       return;
     }
 
