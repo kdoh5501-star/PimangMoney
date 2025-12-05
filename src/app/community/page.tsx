@@ -73,7 +73,6 @@ export default function CommunityPage() {
           )
         `,
         )
-        .eq("boards.slug", "free")
         .order("created_at", { ascending: false });
 
       if (error) {
