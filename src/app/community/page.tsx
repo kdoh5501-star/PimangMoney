@@ -317,6 +317,12 @@ export default function CommunityPage() {
                   >
                     회원가입
                   </Link>
+                  <Link
+                    href="/write"
+                    className="hidden md:inline-block bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-lg text-sm font-medium transition"
+                  >
+                    글쓰기
+                  </Link>
                 </div>
               )}
             </div>

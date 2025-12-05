@@ -13,7 +13,7 @@ type Board = {
 
 export default function WritePage() {
   const router = useRouter();
-  const { user, loading } = useAuth();
+  const { user } = useAuth();
 
   const [boards, setBoards] = useState<Board[]>([]);
   const [boardId, setBoardId] = useState<string>("");
@@ -45,15 +45,8 @@ export default function WritePage() {
     void loadBoards();
   }, []);
 
-  useEffect(() => {
-    if (!loading && !user) {
-      router.replace("/login");
-    }
-  }, [loading, user, router]);
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!user) return;
     if (!boardId) {
       setError("게시판을 선택해주세요.");
       return;
@@ -67,13 +60,20 @@ export default function WritePage() {
       .map((t) => t.trim())
       .filter(Boolean);
 
-    const { error: insertError } = await supabase.from("posts").insert({
+    const payload: Record<string, unknown> = {
       board_id: boardId,
-      author_id: user.id,
       title,
       content,
       tags,
-    });
+    };
+
+    // 로그인 한 경우에는 Supabase 사용자 id를 함께 저장해서
+    // 나중에 마이페이지, 닉네임 표시 등에 활용합니다.
+    if (user) {
+      payload.author_id = user.id;
+    }
+
+    const { error: insertError } = await supabase.from("posts").insert(payload);
 
     setSubmitting(false);
 
@@ -85,14 +85,6 @@ export default function WritePage() {
 
     router.push("/community");
   };
-
-  if (loading || !user) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <p className="text-sm text-gray-500">로그인 상태를 확인하는 중입니다...</p>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-gray-50">

@@ -84,6 +84,11 @@ export default function SignupPage() {
               onChange={(e) => setEmail(e.target.value)}
               className="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
             />
+            <p className="mt-1 text-xs text-gray-500 leading-relaxed">
+              네이버 메일은 Supabase 인증 메일이 정상적으로 도착하지 않을 수 있습니다.
+              <br />
+              가능하면 <span className="font-semibold text-gray-700">Google(Gmail) 계정</span>으로 가입해 주세요.
+            </p>
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
